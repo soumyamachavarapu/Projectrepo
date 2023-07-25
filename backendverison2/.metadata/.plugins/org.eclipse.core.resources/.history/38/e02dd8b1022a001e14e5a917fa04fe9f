@@ -1,0 +1,4 @@
+server.port=8087
+
+spring.data.mongodb.database=slotDB
+spring.data.mongodb.uri=mongodb://localhost:27017/noteDB

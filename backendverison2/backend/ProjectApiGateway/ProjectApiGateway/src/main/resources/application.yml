@@ -1,0 +1,41 @@
+
+server:
+  port: 5000
+
+spring:
+  application:
+    name: GatewayService
+ 
+  cloud:
+    gateway:
+      routes:
+        - id: userID
+          uri: http://localhost:7000
+          predicates:
+            - Path=/api/register/**
+            
+        - id: uemail
+          uri: http://localhost:8085
+          predicates:
+            - Path=/api/login/**
+            
+        - id: order_id
+          uri: http://localhost:8087
+          predicates:
+            - Path=/api/order/**
+            
+        - id: carId
+          uri: http://localhost:8000
+          predicates:
+            - Path=/cars/v1/**
+
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    eureka-service-url:
+      default-zone: http://localhost:8761/eureka
+
+debug: true
+
